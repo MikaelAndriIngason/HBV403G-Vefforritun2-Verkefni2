@@ -6,14 +6,14 @@ import {
   listEvent,
   listEventByName,
   listEvents,
-  updateEvent,
+  updateEvent
 } from '../lib/db.js';
 import passport, { ensureLoggedIn } from '../lib/login.js';
 import { slugify } from '../lib/slugify.js';
 import {
   registrationValidationMiddleware,
   sanitizationMiddleware,
-  xssSanitizationMiddleware,
+  xssSanitizationMiddleware
 } from '../lib/validation.js';
 
 export const adminRouter = express.Router();
@@ -206,11 +206,14 @@ adminRouter.post(
   }
 );
 
-adminRouter.get('/logout', (req, res) => {
-  // logout hendir session cookie og session
-  req.logout();
-  res.redirect('/');
+adminRouter.get('/logout', (req, res, next) => {
+  // eslint-disable-next-line consistent-return
+  req.logout((err) => {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
 });
+
 
 // Verður að vera seinast svo það taki ekki yfir önnur route
 adminRouter.get('/:slug', ensureLoggedIn, catchErrors(eventRoute));
