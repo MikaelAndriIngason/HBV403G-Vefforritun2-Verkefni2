@@ -90,16 +90,16 @@ describe('db', () => {
     expect(registration).toBeNull();
   });
 
-  it ('Returns up to 10 rows of events', async () => {
+  it ('listNEvents: Returns up to 10 rows of events', async () => {
     const n = await listNEvents(0);
     expect(n.length).toBe(4);
   });
 
-  it ('getNumberOfEvents', async () => {
+  it ('getNumberOfEvents: Returns the amount of events', async () => {
     expect(await getNumberOfEvents()).toBe(4);
   })
 
-  it ('deleteEvent', async () => {
+  it ('deleteEvent: Deletes an event', async () => {
     await deleteEvent('two');
     expect(await getNumberOfEvents()).toBe(3);
   })
