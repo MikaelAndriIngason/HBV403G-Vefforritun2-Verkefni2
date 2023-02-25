@@ -232,7 +232,7 @@ export async function getNumberOfEvents() {
   const result = await query(q);
 
   if (result && result.rowCount === 1) {
-    return result.rows[0];
+    return Number(result.rows[0].count);
   }
 
   return null;

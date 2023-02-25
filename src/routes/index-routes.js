@@ -22,7 +22,7 @@ async function indexRoute(req, res) {
 
   const numberOfEvents = await getNumberOfEvents();
 
-  const numberOfPages = Math.ceil(numberOfEvents.count / 10);
+  const numberOfPages = Math.ceil(numberOfEvents / 10);
 
   const events = await listNEvents(pageNum);
 

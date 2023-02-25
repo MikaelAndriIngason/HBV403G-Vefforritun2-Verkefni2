@@ -7,6 +7,9 @@ import {
   end,
   register,
   updateEvent,
+  listNEvents,
+  deleteEvent,
+  getNumberOfEvents
 } from '../lib/db';
 
 dotenv.config({ path: './.env.test' });
@@ -86,4 +89,20 @@ describe('db', () => {
 
     expect(registration).toBeNull();
   });
+
+  it ('Returns up to 10 rows of events', async () => {
+    const n = await listNEvents(0);
+    expect(n.length).toBe(4);
+  });
+
+  it ('getNumberOfEvents', async () => {
+    expect(await getNumberOfEvents()).toBe(4);
+  })
+
+  it ('deleteEvent', async () => {
+    await deleteEvent('two');
+    expect(await getNumberOfEvents()).toBe(3);
+  })
 });
+
+
