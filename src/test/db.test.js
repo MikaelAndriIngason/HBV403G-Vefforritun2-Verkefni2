@@ -21,6 +21,7 @@ describe('db', () => {
   });
 
   afterAll(async () => {
+    await dropSchema();
     await end();
   });
 
