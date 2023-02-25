@@ -4,6 +4,15 @@
 
 <%- include('events') -%>
 
+<div class="pagebuttons">
+  <% if (pageNum > 0) { %>
+    <a href="?page=<%= pageNum - 1 %>">⯇ Fyrri síða</a>
+  <% } %>
+  <% if (pageNum < numberOfPages - 1)  { %>
+    <a href="?page=<%= pageNum + 1 %>">Næsta síða ⯈</a>
+  <% } %>
+</div>
+
 <div class="link">
   <a class="link__link" href="/admin">Innskráning stjórnanda</a>
 </div>

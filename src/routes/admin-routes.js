@@ -2,8 +2,7 @@ import express from 'express';
 import { validationResult } from 'express-validator';
 import { catchErrors } from '../lib/catch-errors.js';
 import {
-  createEvent,
-  listEvent,
+  createEvent, deleteEvent, listEvent,
   listEventByName,
   listEvents,
   updateEvent
@@ -140,7 +139,7 @@ async function registerRoute(req, res) {
 }
 
 async function updateRoute(req, res) {
-  const { name, description } = req.body;
+  const { name, description, location, url } = req.body;
   const { slug } = req.params;
 
   const event = await listEvent(slug);
@@ -151,6 +150,8 @@ async function updateRoute(req, res) {
     name,
     slug: newSlug,
     description,
+    location,
+    url
   });
 
   if (updated) {
@@ -158,6 +159,12 @@ async function updateRoute(req, res) {
   }
 
   return res.render('error');
+}
+
+async function deleteEventRoute(req, res, next) {
+  const { slug } = req.params;
+  await deleteEvent(slug)
+  next();
 }
 
 async function eventRoute(req, res, next) {
@@ -175,7 +182,11 @@ async function eventRoute(req, res, next) {
     title: `${event.name} — Viðburðir — umsjón`,
     event,
     errors: [],
-    data: { name: event.name, description: event.description },
+    data: { name: event.name,
+            description: event.description,
+            location: event.location,
+            url: event.url
+          },
   });
 }
 
@@ -213,6 +224,23 @@ adminRouter.get('/logout', (req, res, next) => {
     res.redirect('/');
   });
 });
+
+// adminRouter.post('/deleteEvent', catchErrors(deleteEvent));
+
+adminRouter.get('/delete/:slug', ensureLoggedIn, deleteEventRoute, (req, res) => {
+  res.redirect('/admin');
+});
+
+/* adminRouter.get('/delete/:slug', ensureLoggedIn, catchErrors(eventRoute));
+adminRouter.post(
+  '/',
+  ensureLoggedIn,
+  registrationValidationMiddleware('description'),
+  xssSanitizationMiddleware('description'),
+  catchErrors(validationCheckUpdate),
+  sanitizationMiddleware('description'),
+  catchErrors(deleteEvent)
+); */
 
 
 // Verður að vera seinast svo það taki ekki yfir önnur route

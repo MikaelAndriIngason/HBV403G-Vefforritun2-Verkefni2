@@ -14,6 +14,16 @@
         <textarea name="description" id="description"><%= data.description %></textarea>
       </div>
 
+      <div class="field field--textarea<%= locals.isInvalid('location', errors) ?  ' field--invalid' : '' %>">
+        <label for="location">Staðsetning:</label>
+        <input type="text" name="location" id="location" value="<%= data.location %>">
+      </div>
+
+      <div class="field field--textarea<%= locals.isInvalid('url', errors) ?  ' field--invalid' : '' %>">
+        <label for="url">Slóð (URL):</label>
+        <input type="text" name="url" id="url" value="<%= data.url %>">
+      </div>
+
       <% if (errors.length > 0) { %>
         <h3 class="errors__title">Villur við skráningu:</h3>
         <ul class="errors">

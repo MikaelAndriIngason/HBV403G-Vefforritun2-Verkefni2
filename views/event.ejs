@@ -3,6 +3,10 @@
 <section class="event">
   <div class="event__info">
     <h1 class="event__title"><%= event.name %></h1>
+    <div class="event__details">
+      <p ><%= event.location %></p>
+      <a href="<%= event.url %>"> <%= event.url %></a>
+    </div>
     <p class="event__description"><%= event.description %></p>
   </div>
 
@@ -49,7 +53,7 @@
     </form>
   </div>
   <div class="link">
-    <a class="link__link" href="/">Til baka</a>
+    <a class="link__link" href="/">⯇ Til baka</a>
   </div>
 </section>
 

@@ -122,8 +122,15 @@ section {
   margin-bottom: 2rem;
 }
 
+.events__list {
+  list-style: none;
+}
+
 .events__event {
-  margin-bottom: 1rem;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
 }
 
 .events__eventLink {
@@ -135,6 +142,31 @@ section {
   font-style: italic;
 }
 
+.events__eventDetails {
+  column-gap: 1em;
+  display: flex;
+  opacity: 0.75;
+  padding-top: 0.5em;
+}
+
+.events_eventActionButtons {
+  margin: 1rem 0 0.5rem;
+}
+
+.events_eventActionButtons a {
+  background-color: var(--color-accent);
+  border-radius: 8px;
+  color: #000;
+  font-size: 14px;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+.events_eventActionButtons a:last-child {
+  background-color: rgb(192, 23, 23);
+  color: #fff;
+}
+
 /** VIÐBURÐUR **/
 .event__info,
 .event__registered {
@@ -143,6 +175,14 @@ section {
 
 .event__title {
   font-size: 2rem;
+}
+
+.event__details {
+  column-gap: 1em;
+  display: flex;
+  font-style: italic;
+  margin: -1em 0 1em;
+  opacity: 0.75;
 }
 
 .event__subtitle {
@@ -181,4 +221,15 @@ section {
 
 .user__loggedin {
   margin-bottom: 0.5rem;
+}
+
+
+
+.pagebuttons {
+  text-align: center;
+  width: 100%;
+}
+
+.pagebuttons a {
+  padding: 0 1em;
 }
