@@ -143,7 +143,6 @@ section {
 }
 
 .events__eventDetails {
-  column-gap: 1em;
   display: flex;
   opacity: 0.75;
   padding-top: 0.5em;
@@ -178,11 +177,20 @@ section {
 }
 
 .event__details {
-  column-gap: 1em;
   display: flex;
   font-style: italic;
   margin: -1em 0 1em;
   opacity: 0.75;
+}
+
+.events__eventDetails p,
+.event__details p {
+  padding-right: 1em;
+}
+
+.events__eventDetails p:empty,
+.event__details p:empty {
+  padding: 0;
 }
 
 .event__subtitle {

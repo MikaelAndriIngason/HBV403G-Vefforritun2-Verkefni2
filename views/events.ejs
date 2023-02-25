@@ -5,10 +5,10 @@
       <li class="events__event">
         <a href="/<%= event.slug %>" class="events__eventLink"><%= event.name %></a>
         <p class="events__eventDescription"><%= event.description %></p>
-        <!--<div class="events__eventDetails">
+        <div class="events__eventDetails">
           <p ><%= event.location %></p>
           <a href="<%= event.url %>"> <%= event.url %></a>
-        </div>-->
+        </div>
         <% if (admin) { %>
           <p class="events_eventActionButtons">
             <a href="/admin/<%= event.slug %>" class="events__eventEdit">Uppfæra viðburð</a>

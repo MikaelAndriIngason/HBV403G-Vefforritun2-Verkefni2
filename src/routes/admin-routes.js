@@ -126,10 +126,10 @@ async function validationCheckUpdate(req, res, next) {
 }
 
 async function registerRoute(req, res) {
-  const { name, description } = req.body;
+  const { name, description, location, url } = req.body;
   const slug = slugify(name);
 
-  const created = await createEvent({ name, slug, description });
+  const created = await createEvent({ name, slug, description, location, url });
 
   if (created) {
     return res.redirect('/admin');
